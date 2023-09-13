@@ -62,10 +62,11 @@ pipeline{
                           git config --global user.email "emmanelm73@gmail.com"
                           git add kube.yaml
                           git commit -m "updated the kube file"
+                          git push git@github.com:emmanuel5507/micro-api.git main 
                         """
-                        withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                          sh "git push https://github.com/emmanuel5507/micro-api.git main "
-                         }
+                        //withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                         // sh "git push git@github.com:emmanuel5507/micro-api.git main "
+                         //}
                     }
                 }
               }                
