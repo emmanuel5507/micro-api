@@ -35,6 +35,15 @@ pipeline{
                 }
               }  
             }
+            stage('Remove old DOCKER IMAGE'){
+              steps{
+                script{
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                    }
+                }
+              }  
+            }
             
         }
 
