@@ -64,7 +64,7 @@ pipeline{
                           git commit -m "updated the kube file"
                         """
                         withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
-                            sh "git push git@github.com:emmanuel5507/micro-api.git main "
+                            sh "git push https://github.com/emmanuel5507/micro-api.git main"
                         }
                        
                     }
