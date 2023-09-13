@@ -18,6 +18,33 @@ pipeline{
                 }
                      
             }
+            stage('Build Docker image'){
+              steps{
+                script{
+                    docker_image = docker.build "${IMAGE_NAME}"
+                }
+              }  
+            }
+            stage('PUSH DOCKER IMAGE'){
+              steps{
+                script{
+                    docker.withRegistry('',REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
+                }
+              }  
+            }
+            stage('PUSH DOCKER IMAGE'){
+              steps{
+                script{
+                    docker.withRegistry('',REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
+                }
+              }  
+            }
         }
 
     
