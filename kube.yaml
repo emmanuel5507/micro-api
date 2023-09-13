@@ -1,9 +1,9 @@
-api:9
+api:10
 kind: "Service"
 metadata:
   labels:
-    app: "zuul-api:9
-  name: "zuul-api:9
+    app: "zuul-api:10
+  name: "zuul-api:10
 spec:
   ports:
   - name: "http"
@@ -12,27 +12,27 @@ spec:
     nodePort: 32470
   type: "NodePort"
   selector:
-    app: "zuul-api:9
+    app: "zuul-api:10
 ---
-api:9
+api:10
 kind: Deployment
 metadata:
-  name: "zuul-api:9
+  name: "zuul-api:10
   labels:
     app: zulu
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "zuul-api:9
+      app: "zuul-api:10
   template:
     metadata:
       labels:
-        app: "zuul-api:9
+        app: "zuul-api:10
     spec:
       containers:
-      - name: "zuul-api:9
-        image: "emman777/api:9
+      - name: "zuul-api:10
+        image: "emman777/api:10
         imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 9999
