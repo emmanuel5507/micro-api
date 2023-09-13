@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: "zuul-api-gateway"
-        image: "emman777/api:latest"
+        image: "emman777/api:v1"
         imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 9999
