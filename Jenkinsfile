@@ -42,7 +42,33 @@ pipeline{
                     sh "docker rmi ${IMAGE_NAME}:latest"
                     }
                 }
-              }  
+              }
+              stage('updating k8s kube file'){
+                steps{
+                    script{
+                        sh """
+                        cat kube.yaml
+                        sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' kube.yaml
+                        cat kube.yaml
+                        """
+                    }
+                }
+              } 
+               stage('update k8s kube file to git'){
+                steps{
+                    script{
+                        sh """
+                          git config --global user.name "emmanuel5507"
+                          git config --global user.email "emmanelm73@gmail.com"
+                          git add kube.yaml
+                          git commit -m "updated the kube file"
+                        """
+                        withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                          sh "git push https://github.com/emmanuel5507/micro-api.git main "
+                         }
+                    }
+                }
+              }                
             }
             
  }
